@@ -1,8 +1,8 @@
 resource "aws_autoscaling_group" "nodes-kubernetesazat-com" {
   name                 = "nodes.kubernetesazat.com"
   launch_configuration = "${aws_launch_configuration.nodes-kubernetesazat-com.id}"
-  max_size             = 2
-  min_size             = 2
+  max_size             = "${var.node_max_size}"
+  min_size             = "${var.node_min_size}"
   vpc_zone_identifier  = ["${aws_subnet.us-west-2a-kubernetesazat-com.id}", "${aws_subnet.us-west-2b-kubernetesazat-com.id}", "${aws_subnet.us-west-2c-kubernetesazat-com.id}"]
 
   tag = {
