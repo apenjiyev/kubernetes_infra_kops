@@ -1,5 +1,3 @@
-
-
 resource "aws_subnet" "us-west-2a-kubernetesazat-com" {
   vpc_id            = "${aws_vpc.kubernetesazat-com.id}"
   cidr_block        = "172.20.32.0/19"
@@ -83,32 +81,3 @@ resource "aws_subnet" "utility-us-west-2c-kubernetesazat-com" {
     "kubernetes.io/role/elb"                   = "1"
   }
 }
-
-resource "aws_vpc" "kubernetesazat-com" {
-  cidr_block           = "172.20.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-
-  tags = {
-    KubernetesCluster                          = "kubernetesazat.com"
-    Name                                       = "kubernetesazat.com"
-    "kubernetes.io/cluster/kubernetesazat.com" = "owned"
-  }
-}
-
-resource "aws_vpc_dhcp_options" "kubernetesazat-com" {
-  domain_name         = "us-west-2.compute.internal"
-  domain_name_servers = ["AmazonProvidedDNS"]
-
-  tags = {
-    KubernetesCluster                          = "kubernetesazat.com"
-    Name                                       = "kubernetesazat.com"
-    "kubernetes.io/cluster/kubernetesazat.com" = "owned"
-  }
-}
-
-resource "aws_vpc_dhcp_options_association" "kubernetesazat-com" {
-  vpc_id          = "${aws_vpc.kubernetesazat-com.id}"
-  dhcp_options_id = "${aws_vpc_dhcp_options.kubernetesazat-com.id}"
-}
-
