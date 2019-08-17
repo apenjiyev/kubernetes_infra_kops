@@ -573,16 +573,16 @@ resource "aws_internet_gateway" "kubernetesazat-com" {
   }
 }
 
-resource "aws_key_pair" "kubernetes-kubernetesazat-com-a8bc8d6a15a3db3942a203fc10d39279" {
-  key_name   = "kubernetes.kubernetesazat.com-a8:bc:8d:6a:15:a3:db:39:42:a2:03:fc:10:d3:92:79"
-  public_key = "${file("${path.module}/data/aws_key_pair_kubernetes.kubernetesazat.com-a8bc8d6a15a3db3942a203fc10d39279_public_key")}"
+resource "aws_key_pair" "kubernetes-kubernetesazat-com-93d79cc4cf6e8f8a24eb688f53d81d94" {
+  key_name   = "kubernetes.kubernetesazat.com-93:d7:9c:c4:cf:6e:8f:8a:24:eb:68:8f:53:d8:1d:94"
+  public_key = "${file("${path.module}/data/aws_key_pair_kubernetes.kubernetesazat.com-93d79cc4cf6e8f8a24eb688f53d81d94_public_key")}"
 }
 
 resource "aws_launch_configuration" "bastions-kubernetesazat-com" {
   name_prefix                 = "bastions.kubernetesazat.com-"
   image_id                    = "ami-0d8618ba6320df983"
   instance_type               = "t2.micro"
-  key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-a8bc8d6a15a3db3942a203fc10d39279.id}"
+  key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-93d79cc4cf6e8f8a24eb688f53d81d94.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.bastions-kubernetesazat-com.id}"
   security_groups             = ["${aws_security_group.bastion-kubernetesazat-com.id}"]
   associate_public_ip_address = true
@@ -603,8 +603,8 @@ resource "aws_launch_configuration" "bastions-kubernetesazat-com" {
 resource "aws_launch_configuration" "master-us-west-2a-masters-kubernetesazat-com" {
   name_prefix                 = "master-us-west-2a.masters.kubernetesazat.com-"
   image_id                    = "ami-0d8618ba6320df983"
-  instance_type               = "t2.micro"
-  key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-a8bc8d6a15a3db3942a203fc10d39279.id}"
+  instance_type               = "m4.large"
+  key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-93d79cc4cf6e8f8a24eb688f53d81d94.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.masters-kubernetesazat-com.id}"
   security_groups             = ["${aws_security_group.masters-kubernetesazat-com.id}"]
   associate_public_ip_address = false
@@ -626,8 +626,8 @@ resource "aws_launch_configuration" "master-us-west-2a-masters-kubernetesazat-co
 resource "aws_launch_configuration" "master-us-west-2b-masters-kubernetesazat-com" {
   name_prefix                 = "master-us-west-2b.masters.kubernetesazat.com-"
   image_id                    = "ami-0d8618ba6320df983"
-  instance_type               = "t2.micro"
-  key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-a8bc8d6a15a3db3942a203fc10d39279.id}"
+  instance_type               = "m4.large"
+  key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-93d79cc4cf6e8f8a24eb688f53d81d94.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.masters-kubernetesazat-com.id}"
   security_groups             = ["${aws_security_group.masters-kubernetesazat-com.id}"]
   associate_public_ip_address = false
@@ -649,8 +649,8 @@ resource "aws_launch_configuration" "master-us-west-2b-masters-kubernetesazat-co
 resource "aws_launch_configuration" "master-us-west-2c-masters-kubernetesazat-com" {
   name_prefix                 = "master-us-west-2c.masters.kubernetesazat.com-"
   image_id                    = "ami-0d8618ba6320df983"
-  instance_type               = "t2.micro"
-  key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-a8bc8d6a15a3db3942a203fc10d39279.id}"
+  instance_type               = "m4.large"
+  key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-93d79cc4cf6e8f8a24eb688f53d81d94.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.masters-kubernetesazat-com.id}"
   security_groups             = ["${aws_security_group.masters-kubernetesazat-com.id}"]
   associate_public_ip_address = false
@@ -672,8 +672,8 @@ resource "aws_launch_configuration" "master-us-west-2c-masters-kubernetesazat-co
 resource "aws_launch_configuration" "nodes-kubernetesazat-com" {
   name_prefix                 = "nodes.kubernetesazat.com-"
   image_id                    = "ami-0d8618ba6320df983"
-  instance_type               = "t2.micro"
-  key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-a8bc8d6a15a3db3942a203fc10d39279.id}"
+  instance_type               = "m4.large"
+  key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-93d79cc4cf6e8f8a24eb688f53d81d94.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.nodes-kubernetesazat-com.id}"
   security_groups             = ["${aws_security_group.nodes-kubernetesazat-com.id}"]
   associate_public_ip_address = false
