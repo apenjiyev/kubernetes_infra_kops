@@ -23,7 +23,7 @@ resource "aws_launch_configuration" "bastions-kubernetesazat-com" {
 resource "aws_launch_configuration" "master-us-west-2a-masters-kubernetesazat-com" {
   name_prefix                 = "master-us-west-2a.masters.kubernetesazat.com-"
   image_id                    = "ami-0d8618ba6320df983"
-  instance_type               = "m4.large"
+  instance_type               = "${var.master_instance_type}"
   key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-93d79cc4cf6e8f8a24eb688f53d81d94.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.masters-kubernetesazat-com.id}"
   security_groups             = ["${aws_security_group.masters-kubernetesazat-com.id}"]
@@ -46,7 +46,7 @@ resource "aws_launch_configuration" "master-us-west-2a-masters-kubernetesazat-co
 resource "aws_launch_configuration" "master-us-west-2b-masters-kubernetesazat-com" {
   name_prefix                 = "master-us-west-2b.masters.kubernetesazat.com-"
   image_id                    = "ami-0d8618ba6320df983"
-  instance_type               = "m4.large"
+  instance_type               = "${var.master_instance_type}"
   key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-93d79cc4cf6e8f8a24eb688f53d81d94.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.masters-kubernetesazat-com.id}"
   security_groups             = ["${aws_security_group.masters-kubernetesazat-com.id}"]
@@ -69,7 +69,7 @@ resource "aws_launch_configuration" "master-us-west-2b-masters-kubernetesazat-co
 resource "aws_launch_configuration" "master-us-west-2c-masters-kubernetesazat-com" {
   name_prefix                 = "master-us-west-2c.masters.kubernetesazat.com-"
   image_id                    = "ami-0d8618ba6320df983"
-  instance_type               = "m4.large"
+  instance_type               = "${var.master_instance_type}"
   key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-93d79cc4cf6e8f8a24eb688f53d81d94.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.masters-kubernetesazat-com.id}"
   security_groups             = ["${aws_security_group.masters-kubernetesazat-com.id}"]
@@ -92,7 +92,7 @@ resource "aws_launch_configuration" "master-us-west-2c-masters-kubernetesazat-co
 resource "aws_launch_configuration" "nodes-kubernetesazat-com" {
   name_prefix                 = "nodes.kubernetesazat.com-"
   image_id                    = "ami-0d8618ba6320df983"
-  instance_type               = "m4.large"
+  instance_type               = "${var.node_instance_type}"
   key_name                    = "${aws_key_pair.kubernetes-kubernetesazat-com-93d79cc4cf6e8f8a24eb688f53d81d94.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.nodes-kubernetesazat-com.id}"
   security_groups             = ["${aws_security_group.nodes-kubernetesazat-com.id}"]
